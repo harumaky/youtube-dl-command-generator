@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Media download</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/16eac9473c.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="readme" class="hide">
+    
+    <div class="readme-content">
+    <i id="close-icon" class="fas fa-times-circle fa-3x"></i>
+    <p>現在はmp3, mp4のみ対応</p>
+    <p>それぞれ最高品質でダウンロードするように設定してあります</p>
+    <p>ショートカット</p>
+    <ul>
+      <li>Enter：コマンド作成</li>
+      <li>ctrl + d：入力情報をクリア</li>
+      <li>ctrl + c：作成されたコマンドをコピー</li>
+    </ul>
+    </div>
+  </div>
+  <div class="container">
+    <div class="top-lead">
+    <h1>Media Download コマンドメーカー</h1>
+    <a id="readme-btn">仕様書を開く</a>
+    <div class="clear"></div>
+    </div>
+    <div class="opt">
+      <div class="opt-info">
+        <label class="opt-label">リンク：<input type="text" name="" id="url"></label>
+        <label class="opt-label">保存する名前：<input type="text" name="" id="name"></label>
+      </div>
+      <div class="type opt-section">
+        <p class="opt-label">ダウンロードタイプ</p>
+        <label><input name="download-type" type="radio" value="audio" checked>音声のみ(mp3)</label>
+        <label><input name="download-type" type="radio" value="video">動画(mp4)</label>
+      </div>
+    </div>
+    <div class="initiate">
+      <div class="initiate-wrapper">
+      <a id="initiate">コマンド作成</a>
+      </div>
+      <p id="error-message"></p>
+    </div>
+    <div class="result">
+      <h2>コマンド</h2>
+      <a id="copy-btn">コピー</a>
+      <div class="clear"></div>
+      <div class="result-wrapper">
+        <textarea readonly name="" id="result" cols="" rows=""></textarea>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="main.js"></script>
+</body>
+</html>

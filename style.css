@@ -1,0 +1,149 @@
+body {
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  background-color: #efefef;
+}
+li {
+  list-style-type: none;
+}
+a {
+  color: #6495ed;
+  text-decoration: none;
+}
+a:hover {
+  color: #1b435d;
+}
+a:active {
+  opacity: 0.6;
+}
+
+
+#readme {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  background-color: rgba(216, 216, 216, 0.9);
+  padding: 20px 50px;
+}
+.readme-content {
+  width: 90%;
+  position: relative;
+}
+#close-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.container {
+  width: 95%;
+  padding: 10px;
+}
+h1 {
+  float: left;
+}
+#readme-btn {
+  padding: 10px 10px 0 0;
+  float: right;
+}
+.hide {
+  display: none;
+}
+.opt {
+  background-color: #eef9ff;
+  padding: 10px;
+}
+.opt-info input {
+  width: 30%;
+  height: 2rem;
+  font-size: 1.1rem;
+  border: 2px solid #757575;
+  margin-right: 10px;
+}
+
+.opt-section {
+  display: flex;
+  align-items: center;
+}
+.opt-label {
+  font-size: 1.2rem;
+  margin-right: 20px;
+}
+.opt label {
+  margin-right: 10px;
+}
+
+.initiate {
+  background-color: #aad6ec;
+  padding: 10px 0;
+}
+.initiate-wrapper {
+  padding: 20px 50px;
+  display: flex;
+}
+.initiate-wrapper a {
+  margin: 0 auto;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #4dc0b2;
+  background-color: white;
+  border: 2px solid #757575;
+  border-radius: 10px;
+  padding: 5px 20px;
+  box-shadow: 0 5px #5b5b5b;
+  
+}
+.initiate a:hover {
+  color: white;
+  background-color: #b2ecec;
+  transition: all .5s;
+}
+.initiate a:active {
+  box-shadow: 0 0 #000;
+  transform: translateY(5px);
+}
+#error-message {
+  text-align: center;
+  font-size: 1.2rem;
+  color: orangered;
+  display: none;
+}
+
+
+
+.result {
+  padding: 10px;
+  background-color: #757575;
+}
+.result h2 {
+  color: #eef9ff;
+  float: left;
+}
+#copy-btn {
+  display: none;
+  margin-top: 18px;
+  margin-left: 30px;
+  padding: 10px 20px;
+  height: 100%;
+  background-color: #efefef;
+}
+#copy-btn:hover {
+  opacity: 0.8;
+}
+.clear {
+  clear: both;
+}
+.result-wrapper {
+  margin: 0 auto;
+  width: 90%;
+}
+.result textarea {
+  width: 100%;
+  height: 5rem;
+  font-size: 1.1rem;
+  border: 5px solid #5b5b5b;
+}
