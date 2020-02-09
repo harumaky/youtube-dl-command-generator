@@ -13,17 +13,26 @@
   let name = document.getElementById('name');
 
   function audio(url, name) {
+    if (name === '') {
+      result = `youtube-dl -x -f 'bestaudio' --audio-format mp3 --audio-quality 0 ${url}`;
+      return false;
+    }
     result = "youtube-dl -x -f 'bestaudio' --audio-format mp3 --audio-quality 0 -o, --output "+'"'+name+".%(ext)s"+'" '+url;
 
     //例：youtube-dl -x -f 'bestaudio' --audio-format mp3 --audio-quality 0 -o, --output "test1.%(ext)s" https://youtu.be/IGInsosP0Ac
   }
   function video(url, name) {
+    if (name === '') {
+      result = `youtube-dl --merge-output-format mp4 -f 'bestvideo+bestaudio[ext=m4a]' ${url}`;
+      return false;
+    }
     result = `youtube-dl --merge-output-format mp4 -f 'bestvideo+bestaudio[ext=m4a]' -o, --output ${name} ${url}`;
 
     //例：youtube-dl --merge-output-format mp4 -f 'bestvideo+bestaudio[ext=m4a]' -o, --output test3video https://youtu.be/IGInsosP0Ac
   }
 
-  let mainCount = 0;
+
+
   function main() {
     copyBtnReset(); //コピーボタンの文字列をリセット
 
@@ -31,13 +40,13 @@
     const urlV = url.value;
     const nameV = name.value;
 
-    if (!(urlV && nameV)) {
-      error.textContent = 'リンク、保存する名前を入力してください';
+    if (!(urlV)) {
+      error.textContent = 'リンクを入力してください';
       error.style.display = 'block';
       textarea.value = '';
       return false;
     }
-
+    
     const types = document.querySelectorAll('.type input')
     let selectedType = '';
     types.forEach(type => {
@@ -59,7 +68,6 @@
     error.style.display = 'none'; //いままでのエラー消去
     copyBtn.style.display = 'inline-block'; //コピーボタン表示
     //以下で履歴追加関数を実行
-    mainCount++;
     addHistory(result);
     console.log('main()を正常に実行完了')
   }
