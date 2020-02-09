@@ -6,6 +6,7 @@
   const error = document.getElementById('error-message');
   const copyBtn = document.getElementById('copy-btn');
   const readme = document.getElementById('readme');
+  const history = document.getElementById('history-ul');
 
   //input
   let url = document.getElementById('url');
@@ -22,8 +23,10 @@
     //例：youtube-dl --merge-output-format mp4 -f 'bestvideo+bestaudio[ext=m4a]' -o, --output test3video https://youtu.be/IGInsosP0Ac
   }
 
+  let mainCount = 0;
   function main() {
-    copyBtnReset();
+    copyBtnReset(); //コピーボタンの文字列をリセット
+
     //input内容を更新する意味も兼ねて
     const urlV = url.value;
     const nameV = name.value;
@@ -51,11 +54,17 @@
       return false;
     }
 
+    //ここまできたら、正常にコマンド作成完了
     textarea.value = result;
     error.style.display = 'none'; //いままでのエラー消去
-    copyBtn.style.display = 'inline-block';
+    copyBtn.style.display = 'inline-block'; //コピーボタン表示
+    //以下で履歴追加関数を実行
+    mainCount++;
+    addHistory(result);
     console.log('main()を正常に実行完了')
   }
+
+
 
   function copy() {
     textarea.select();
@@ -69,6 +78,16 @@
   function copyBtnReset() {
     copyBtn.textContent = 'コピー';
     copyBtn.style.opacity = 1;
+  }
+
+  let historyNum = 0;
+  function addHistory(result) {
+    const li = document.createElement('li');
+    li.setAttribute('id', `history-${historyNum}`); //新しいリストにインデックスidを付与
+    li.textContent = result;
+    history.insertBefore(li, document.getElementById(`history-${historyNum-1}`)); //一つ前のインデックスidを取得して、beforeのリファレンスとする
+    
+    historyNum++;
   }
 
 
