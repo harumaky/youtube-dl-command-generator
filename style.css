@@ -7,7 +7,7 @@ body {
 li {
   list-style-type: none;
 }
-a {
+a, .fa-external-link-alt{
   color: #6495ed;
   text-decoration: none;
 }
@@ -25,18 +25,26 @@ a:active {
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 100;
+  z-index: 10;
   background-color: rgba(216, 216, 216, 0.9);
-  padding: 20px 50px;
+}
+.readme-wrap {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 5vh;
+  padding: 10px;
+  background-color: #eef9ff;
 }
 .readme-content {
-  width: 90%;
   position: relative;
+  background-color: white;
+  padding: 10px;
 }
 #close-icon {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 10px;
+  right: 10px;
+  color: #757575;
 }
 
 .container {
