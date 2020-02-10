@@ -17,6 +17,7 @@
       result = `youtube-dl -x -f 'bestaudio' --audio-format mp3 --audio-quality 0 ${url}`;
       return false;
     }
+   
     result = "youtube-dl -x -f 'bestaudio' --audio-format mp3 --audio-quality 0 -o, --output "+'"'+name+".%(ext)s"+'" '+url;
 
     //例：youtube-dl -x -f 'bestaudio' --audio-format mp3 --audio-quality 0 -o, --output "test1.%(ext)s" https://youtu.be/IGInsosP0Ac
@@ -26,7 +27,7 @@
       result = `youtube-dl --merge-output-format mp4 -f 'bestvideo+bestaudio[ext=m4a]' ${url}`;
       return false;
     }
-    result = `youtube-dl --merge-output-format mp4 -f 'bestvideo+bestaudio[ext=m4a]' -o, --output ${name} ${url}`;
+    result = `youtube-dl --merge-output-format mp4 -f 'bestvideo+bestaudio[ext=m4a]' -o, --output "${name}" ${url}`;
 
     //例：youtube-dl --merge-output-format mp4 -f 'bestvideo+bestaudio[ext=m4a]' -o, --output test3video https://youtu.be/IGInsosP0Ac
   }
@@ -46,7 +47,7 @@
       textarea.value = '';
       return false;
     }
-    
+
     const types = document.querySelectorAll('.type input')
     let selectedType = '';
     types.forEach(type => {
@@ -61,6 +62,22 @@
       error.textContent = 'ダウンロードタイプを選択してください';
       error.style.display = 'block';
       return false;
+    }
+
+    const rmBestSetBtn = document.getElementById('remove-best-settings');
+    if (rmBestSetBtn.checked === true) {
+      result = result.split('--audio-quality 0').join('')
+      result = result.split("-x -f 'bestaudio'").join('')
+      //videoの場合はコマンド再生成して応急処置
+      if (selectedType === 'audio') {
+        result = result + ' --extract-audio';
+      } else if (selectedType === 'video') {
+        if (nameV === '') {
+          result = `youtube-dl -f mp4 ${urlV}`
+        } else {
+          result = `youtube-dl -f mp4 -o "${nameV}.%(ext)s" ${urlV}`;
+        }
+      }
     }
 
     //ここまできたら、正常にコマンド作成完了
